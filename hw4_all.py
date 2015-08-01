@@ -1,6 +1,6 @@
 import problem_data
 import numpy as np
-import utils
+import utils_io
 
 ###########
 # problem 1
@@ -8,7 +8,7 @@ import utils
 
 def prob_1():
     W, s, t = problem_data.hw4_p1_data()
-    utils.label('4.1b')
+    utils_io.label('4.1b')
     print 'Shortest paths for each matrix in \'matrix_name, [path], weight\' format:'
     for i in range(W.shape[0]):
         p, wp = bellman_ford(W[i], s[i], t[i])
@@ -55,7 +55,7 @@ def bellman_ford(W, v_start, v_end):
 
 def prob_2():
     W, s, t = problem_data.hw4_p1_data()
-    utils.label('4.2c')
+    utils_io.label('4.2c')
     print 'Shortest paths for each matrix in \'matrix_name, [path], weight\' format:'
     for i in range(W.shape[0]):
         p, wp = forward_bellman_ford(W[i], s[i], t[i])
@@ -116,7 +116,7 @@ def prob_3():
             elif a[j] >= a[i] and j > i:
                 W[i, j] = 0
     p, wp = bellman_ford(W, 0, num_nodes - 1)
-    utils.label('4.3b')
+    utils_io.label('4.3b')
     print 'Maximum weight job schedule (assuming jobs labeled 1 to n): ', p[:-1]
     print 'Total weight: ', -wp
 

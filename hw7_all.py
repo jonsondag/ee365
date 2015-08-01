@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import problem_data
 import utils_fns
-import utils
+import utils_io
 
 
 ###########
@@ -13,7 +13,7 @@ def p_1():
     A, b, x, _, _, _, _, _, _ = problem_data.hw7_p1_data()
     lin_func = utils_fns.LinearFunction(A, b)
     first_result = np.linalg.norm(lin_func.evaluate(x), ord=2) ** 2
-    utils.label('7.1')
+    utils_io.label('7.1')
     print 'norm squared direct calc result: ', str(first_result)
     second_result = lin_func.norm_squared_linear().evaluate(x)
     print 'norm squared calc via quadratic function: ', str(second_result)
@@ -27,7 +27,7 @@ def p_2b():
     quad_func = utils_fns.QuadraticFunction(P, q, r)
     quad_func_partial = quad_func.partial_evaluation(y, len(y))
     first_result = quad_func_partial.evaluate(x)
-    utils.label('7.2b')
+    utils_io.label('7.2b')
     print 'quadratic function partial evaluation result: ', str(first_result)
     second_result = quad_func.evaluate(np.concatenate((x, y)))
     print 'quadratic function direct evaluation result: ', str(second_result)
@@ -41,7 +41,7 @@ def p_2e():
     quad_func = utils_fns.QuadraticFunction(P, q, r)
     h_x = quad_func.partial_expectation(y_mean, y_cov)
     first_result = h_x.evaluate(x)
-    utils.label('7.2e')
+    utils_io.label('7.2e')
     print 'partial expectation via quadratic function: ', str(first_result)
     second_result = 0.
     for idx, y_val in enumerate(y_vals):
@@ -83,7 +83,7 @@ def p_3():
     b_f = np.zeros([A_f.shape[0], 1])
     f = utils_fns.LinearFunction(A_f, b_f)
     val, pol, _ = ss_lqsc(f, g, w_bar, w_var, n, m)
-    utils.label('7.3')
+    utils_io.label('7.3')
     print 'optimal steady-state controller values:'
     print pol
     print 'optimal steady-state value function (disregard r-value as we are only interested in quadratic and linear components):'
@@ -271,18 +271,18 @@ def p4_d_e(params):
                                 'avg_cost_ss': avg_cost_ss, 'avg_cost_adp': avg_cost_adp}, ignore_index=True)
     # df.to_csv(os.path.expanduser('~') + '/crossbar_switch.csv')
     strat_ss = df.sort('avg_cost_ss').iloc[0]
-    utils.label('7.4d')
+    utils_io.label('7.4d')
     print 'best optimal steady-state strategy has avg_cost={0:.3f} with rho_1={1:.2f}, rho_2={2:.2f}, rho_3={3:.2f}'. \
         format(strat_ss['avg_cost_ss'], strat_ss['rho_1'], strat_ss['rho_2'], strat_ss['rho_3'])
     strat_adp = df.sort('avg_cost_adp').iloc[0]
-    utils.label('7.4e')
+    utils_io.label('7.4e')
     print 'best optimal adp strategy has avg_cost={0:.3f} with rho_1={1:.2f}, rho_2={2:.2f}, rho_3={3:.2f}'. \
         format(strat_adp['avg_cost_adp'], strat_adp['rho_1'], strat_adp['rho_2'], strat_adp['rho_3'])
 
 
 def p_4():
     p4_params = P4Params(*problem_data.hw7_p4_data())
-    utils.label('7.4b')
+    utils_io.label('7.4b')
     print 'average heuristic policy stage cost is: {0:.3f}'.format(simulate_strategy(strategy_4b, p4_params))
     p4_d_e(p4_params)
 

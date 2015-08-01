@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn
-import utils
+import utils_io
 
 ###########
 # problem 4
@@ -58,7 +58,7 @@ def prob_4():
         if all_costs[idx] < min_cl_cost:
             min_cl_cost = all_costs[idx]
             min_cl_idx = idx
-    utils.label('1.4a')
+    utils_io.label('1.4a')
     print 'min_ol_cost: ', str(min_ol_cost)
     print 'min_ol_policy: ', phi_cl[min_ol_idx]
     # print 'min_ol_costs_by_w: ', all_cost_arrs[min_ol_idx]
@@ -67,7 +67,7 @@ def prob_4():
     df = df.groupby('min_costs').sum()
 
     # 4b
-    utils.label('1.4b')
+    utils_io.label('1.4b')
     print 'expected cost, optimal prescient policy: ', str(np.sum(min_prescient_costs * pw))
     # print 'min_prescient_costs_by_w: ', min_prescient_costs
 
@@ -76,7 +76,7 @@ def prob_4():
     df = df.join(df_prescient, how='outer')
 
     # 4c
-    utils.label('1.4c')
+    utils_io.label('1.4c')
     print 'min_cl_cost: ', str(min_cl_cost)
     print 'min_cl_policy: ', phi_cl[min_cl_idx]
 

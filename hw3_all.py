@@ -5,7 +5,7 @@ import pandas as pd
 import random
 import scipy.stats
 import seaborn
-import utils
+import utils_io
 
 
 ###########
@@ -108,7 +108,7 @@ def part_d(P):
 
     v_1 = v_t
     v_0 = x_ss * profit_vec + np.dot(P, v_1)
-    utils.label('3.1d')
+    utils_io.label('3.1d')
     print 'alpha: ', str((v_0 - v_1)[0])
     ax = pd.Series(v_0).plot(title='Value Function')
     ax.set_xlabel('$x$')
@@ -120,7 +120,7 @@ def part_e(P):
     x = np.array([1.] + 25 * [0])
     for T in range(100):
         x = np.dot(x, P)
-    utils.label('3.1e')
+    utils_io.label('3.1e')
     print 'pct of time in slow mode: ', str(np.sum(x[:16]))
     print 'pct of time in normal mode: ', str(np.sum(x[16:23]))
     print 'pct of time in fast mode: ', str(np.sum(x[23:]))
@@ -130,7 +130,7 @@ def part_f(P):
     x = np.array([1.] + 25 * [0])
     for T in range(100):
         x = np.dot(x, P)
-    utils.label('3.1f')
+    utils_io.label('3.1f')
     print 'mean profit per step, large T: ', str(np.dot(x, get_profit_vec()))
 
 
@@ -138,7 +138,7 @@ def part_g(P):
     x = np.array([1.] + 25 * [0])
     for T in range(100):
         x = np.dot(x, P)
-    utils.label('3.1g')
+    utils_io.label('3.1g')
     print 'mean profit per step, large T with $10 penalty: ', str(np.dot(x, get_profit_vec(True)))
 
 
@@ -274,7 +274,7 @@ def prob_3():
     C_ordered = C_no_dupes[L]
     P_index_order = get_index_order(C_ordered)
     P_ordered = P[P_index_order]
-    utils.label('3.3')
+    utils_io.label('3.3')
     print 'Transition matrix formatted for class decomposition:'
     print P_ordered
 
@@ -402,7 +402,7 @@ def get_trans_mat(L, theta):
 def part_a(trans_mat):
     n = trans_mat.shape[0]
     dist = float(1) / n * np.ones(n)
-    utils.label('3.4a')
+    utils_io.label('3.4a')
     for t in range(101):
         dist = np.dot(dist, trans_mat)
         if t == 10 or t == 100:
@@ -421,7 +421,7 @@ def part_b_mc(trans_mat, R):
             value += R[state, next_state]
             state = next_state
         values.append(value)
-    utils.label('3.4b')
+    utils_io.label('3.4b')
     print 'J is expected total payment...'
     print 'MC estimate of J, t=0,...,50:', str(np.mean(values))
 

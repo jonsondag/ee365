@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import scipy.stats
 import seaborn
-import utils
+import utils_io
 import utils_mdp
 
 
@@ -100,7 +100,7 @@ def prob_2():
     g_final = np.zeros(n)
     pol, v = utils_mdp.value_info_pat(f, -g, -g_final, price_pdf, buy_not_buy, T)  # pass -g, -g_final since we are maximizing revenue
     v = -v
-    utils.label('5.2b')
+    utils_io.label('5.2b')
     print 'expected revenue, optimal policy' + ':', str(v[-1, 0])
     plot_pol_info_pat('5.2b', pol, [0, 20, 40, 45])
     plot_val('5.2b', v, [0, 45, 48, 49, 50])
@@ -110,7 +110,7 @@ def prob_2():
     g_modified = get_g(n, m, p1, p2, prices_modified)
     pol_mod, v_mod = utils_mdp.value_info_pat(f, -g_modified, -g_final, price_pdf, buy_not_buy, T)
     v_mod = -v_mod
-    utils.label('5.2c')
+    utils_io.label('5.2c')
     print 'expected revenue, threshold policy' + ':', str(v_mod[-1, 0])
     plot_pol_info_pat('5.2c', pol_mod, [0, 20, 40, 45])
     plot_val('5.2c', v_mod, [0, 45, 48, 49, 50])
@@ -131,7 +131,7 @@ def prob_2():
     g_final_mod[0] = 0.
     pol_e, v_e = utils_mdp.value_info_pat(f, -g, -g_final_mod, price_pdf, buy_not_buy, T)
     v_e = -v_e
-    utils.label('5.2e')
+    utils_io.label('5.2e')
     fcl_e, gcl_e = utils_mdp.cloop_info_pat(f, g, pol_e, buy_not_buy)
     P_e = utils_mdp.ftop_info_pat(fcl_e, price_pdf, buy_not_buy)
     prob_unsold = print_probability_unsold(initial_state, P_e, T, 'e')

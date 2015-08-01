@@ -1,6 +1,6 @@
 import numpy as np
 import problem_data
-import utils
+import utils_io
 import utils_fns
 
 
@@ -29,7 +29,7 @@ def prob_3():
         val_fns.append(qfx)
         controllers.append(lfu)
         next_cost = qfx
-    utils.label('6.3')
+    utils_io.label('6.3')
     print 'Optimal expected total cost:', val_fns[-1].evaluate(x0)
 
 

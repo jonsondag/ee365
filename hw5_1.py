@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import problem_data
 import seaborn
-import utils
+import utils_io
 import utils_mdp
 
 
@@ -147,7 +147,7 @@ def prob_1():
     g_sal = get_g_sal(n, p_sal)
     g_total = get_g_total(g_order, g_store, g_rev, g_unmet)
     pol, v = utils_mdp.value(f, g_total, g_sal, d_t_dist, T, g_is_w_dependent=True)
-    utils.label('5.1a')
+    utils_io.label('5.1a')
     print 'j_star: ', v[q_0, 0]
     # part b; yes the optimal policy converges; for all but the last two time periods it is optimal to buy 7 when x = 0,
     #  buy 5 when x = 1, and buy 0 otherwise

@@ -1,5 +1,5 @@
 import numpy as np
-import utils
+import utils_io
 
 
 def exact_stage_cost(A, B, Q, R, W, n):
@@ -27,7 +27,7 @@ def exact_stage_cost(A, B, Q, R, W, n):
 
     P_ss = P_arr[-1]
     K_ss = K_arr[-1]
-    utils.label('6.2')
+    utils_io.label('6.2')
     print 'optimal policy:', K_ss
     print 'calculated avg stage cost:', 0.5 * np.trace(np.dot(P_ss, W))
 

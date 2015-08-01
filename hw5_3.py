@@ -3,7 +3,7 @@ import pandas as pd
 import problem_data
 import random
 import scipy.stats
-import utils
+import utils_io
 import utils_mdp
 
 
@@ -88,7 +88,7 @@ def plot_cost_histogram(job_times, p_mu_normal, p_var_normal, e_c):
     for idx, job_time in enumerate(job_times):
         costs[:, idx] = np.random.lognormal(p_mu_to_use[job_time], p_std_to_use[job_time], num_samples) * e_c_to_use[idx]
     sample_values = pd.Series(costs.sum(axis=1))
-    utils.plot_histogram(sample_values, '5.3a: histogram of cost probabilities', 'Cost', 'Probability of Cost')
+    utils_io.plot_histogram(sample_values, '5.3a: histogram of cost probabilities', 'Cost', 'Probability of Cost')
 
 
 def plot_cost_histogram_real_time(pol, price_grid, e_c):
@@ -107,7 +107,7 @@ def plot_cost_histogram_real_time(pol, price_grid, e_c):
                 this_cost += price_grid[random_price_idx, time_step] * e_c[num_jobs_to_run - sample_jobs_remaining]
                 sample_jobs_remaining -= 1
         costs.append(this_cost)
-    utils.plot_histogram(pd.Series(costs), '5.3b: histogram of cost probabilities', 'Cost', 'Probability of Cost')
+    utils_io.plot_histogram(pd.Series(costs), '5.3b: histogram of cost probabilities', 'Cost', 'Probability of Cost')
 
 
 def get_prices_over_grid(price_grid_dim, p_mu_normal, p_var_normal):
@@ -132,7 +132,7 @@ def prob_3():
 
     # part a
     pol_a, v_a = utils_mdp.value(f, g, v_final, w_dist, T, g_is_time_dependent=True)
-    utils.label('5.3a')
+    utils_io.label('5.3a')
     print_cost(v_a, 'part a')
     job_times = get_schedule(pol_a)
     p_mu_normal = get_underlying_normal_mu(p_mu, p_var)
@@ -146,7 +146,7 @@ def prob_3():
     price_grid_dist = np.ones(len(price_grid)) / len(price_grid)
     f_w_known = f.repeat(price_grid_dim).reshape([n, m, price_grid_dim, 1])
     pol_b, v_b = utils_mdp.value_info_pat(f_w_known, g_w_known, v_final, price_grid_dist, w_dist, T, g_is_time_dependent=True)
-    utils.label('5.3b')
+    utils_io.label('5.3b')
     print_cost(v_b, 'part b')
     plot_cost_histogram_real_time(pol_b, price_grid, e_c)
 

@@ -1,5 +1,5 @@
 import numpy as np
-import utils
+import utils_io
 
 
 def get_K(A_nom, B, P, R):
@@ -44,7 +44,7 @@ def prob_1():
 
     K, P = riccati_recursion(A_nom, B, Q, R, recursion_steps, n, m, epsilon)
 
-    utils.label('6.1b')
+    utils_io.label('6.1b')
     print 'K*:', K
     print 'J*, optimal average stage cost:', np.trace(np.dot(P, W))
 

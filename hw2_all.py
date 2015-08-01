@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import random
 import seaborn
-import utils
+import utils_io
 
 ###########
 # problem 1
@@ -96,7 +96,7 @@ def prob_3():
             grid = np.array(next_states).reshape(grid.shape)
         final_grids.append(grids[-1])
         num_deceased.append(len(np.where(grids[-1] == 2)[0]))
-    utils.label('2.3')
+    utils_io.label('2.3')
     print 'Mean num deceased at T={0:d}, for {1:d} by {1:d} grid: '.format(T, int(num_samples)),\
         str(np.mean(num_deceased))
 
@@ -110,7 +110,7 @@ def prob_5a():
     for time in range(T):
         probs[time] = pi[0]
         pi = np.dot(pi, P)
-    utils.label('2.5a')
+    utils_io.label('2.5a')
     print 'p_T for T={0:d} equals: {1:f}'.format(T-1, np.mean(probs))
 
 
@@ -136,7 +136,7 @@ def prob_5b():
                 next_dist = P[next_idx]
             ones.append(number_of_ones)
         avg_ones[idx] = np.mean(ones) / T
-    utils.label('2.5b')
+    utils_io.label('2.5b')
     print 'num in sample: ', num_samples
     print 'p_T estimate for T={0:d} equals: {1:s}'.format(T-1, avg_ones)
 
