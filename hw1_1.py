@@ -2,10 +2,10 @@ import numpy as np
 import pandas as pd
 import utils_io
 
+
 ###########
 # problem 1
 ###########
-
 def print_prescient_mean(p0, p1):
     utils_io.plot_histogram(pd.Series(np.maximum(p0, p1)), '1.1b prescient revenues', 'num paths with revenue', 'revenue')
     print 'prescient expected revenue', str(np.mean(np.maximum(p0, p1)))

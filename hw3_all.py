@@ -11,7 +11,6 @@ import utils_io
 ###########
 # problem 1
 ###########
-
 def get_transition_matrix():
     max_jobs = 26
     P = np.zeros([max_jobs, max_jobs])
@@ -150,10 +149,10 @@ def prob_1():
     part_f(P)
     part_g(P)
 
+
 ###########
 # problem 2
 ###########
-
 def get_p_modified(P, row):
     result = P.copy()
     result[row] = 0.
@@ -257,10 +256,10 @@ def prob_2():
     part_2d(P, first_plus_second)
     part_2e(P, first_passage, second_passage)
 
+
 ###########
 # problem 3
 ###########
-
 def prob_3():
     n, P = problem_data.hw3_p3_data()
     R = reachable_states(P)
@@ -354,10 +353,10 @@ def test_topological_sort():
                   [1., 1., 1., 1., 1.]])
     topological_sort(A)
 
+
 ###########
 # problem 4
 ###########
-
 def prob_4():
     n, L, R, theta = get_starting_values()
     trans_mat = get_trans_mat(L, theta)

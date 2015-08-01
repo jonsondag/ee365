@@ -5,10 +5,10 @@ import pandas as pd
 import seaborn
 import utils_io
 
+
 ###########
 # problem 4
 ###########
-
 def get_all_costs(T, a, w_seq, pw, phi_cl, ct):
     all_costs = np.zeros(2**(2*2*(T-1)))
     all_cost_arrs = []

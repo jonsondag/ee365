@@ -2,10 +2,10 @@ import problem_data
 import numpy as np
 import utils_io
 
+
 ###########
 # problem 1
 ###########
-
 def prob_1():
     W, s, t = problem_data.hw4_p1_data()
     utils_io.label('4.1b')
@@ -49,10 +49,10 @@ def bellman_ford(W, v_start, v_end):
     forward_paths = [path[::-1] for path in paths]
     return forward_paths[v_start], v_last[v_start]
 
+
 ###########
 # problem 2
 ###########
-
 def prob_2():
     W, s, t = problem_data.hw4_p1_data()
     utils_io.label('4.2c')
@@ -95,10 +95,10 @@ def forward_bellman_ford(W, v_start, v_end):
         v_last = v_next
     return paths[v_end], v_last[v_end]
 
+
 ###########
 # problem 3
 ###########
-
 def prob_3():
     a, b, weights, n = problem_data.hw4_p3_data()
     num_nodes = n + 2

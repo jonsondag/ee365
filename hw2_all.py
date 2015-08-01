@@ -6,10 +6,10 @@ import random
 import seaborn
 import utils_io
 
+
 ###########
 # problem 1
 ###########
-
 def prob_1():
     epsilon = 0.1
     num_dims = 15
@@ -72,10 +72,10 @@ def get_new_grid():
     grid[8, 8] = 1
     return grid
 
+
 ###########
 # problem 3
 ###########
-
 def prob_3():
     num_samples, transition_probabilities, T = problem_data.hw2_p3_data()
     final_grids = []
@@ -100,10 +100,10 @@ def prob_3():
     print 'Mean num deceased at T={0:d}, for {1:d} by {1:d} grid: '.format(T, int(num_samples)),\
         str(np.mean(num_deceased))
 
+
 ###########
 # problem 5
 ###########
-
 def prob_5a():
     pi, P, T = problem_data.hw2_p5_data()
     probs = np.zeros(T)
